@@ -1,5 +1,6 @@
 import requests
 import json
+from datetime import datetime
 from win32com.client import Dispatch
 def speak(str):
     speak = Dispatch("SAPI.SpVoice")
@@ -10,6 +11,7 @@ try:
     hdline = json.loads(head.text)
     speak("Welcome to Alexa of Newspaper.")
     speak("Let's have some general headlines")
+    print(datetime.now(),end="\n\n")
     for i in range(8):
         print(f"This is the news from {hdline['articles'][i]['source']['name']}")
         print(f"{hdline['articles'][i]['title']}")
